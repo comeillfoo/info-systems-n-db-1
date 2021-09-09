@@ -75,8 +75,8 @@ CREATE TABLE IF NOT EXISTS dreams (
 CREATE TABLE IF NOT EXISTS images (
   id serial PRIMARY KEY NOT NULL UNIQUE,
   is_real boolean NOT NULL,
-  fk_image_id serial,
-  FOREIGN KEY( fk_image_id ) REFERENCES dreams( id )
+  fk_dream_id serial,
+  FOREIGN KEY( fk_dream_id ) REFERENCES dreams( id )
 );
 
 -- aliens of realties table
@@ -93,7 +93,8 @@ CREATE TABLE IF NOT EXISTS expulsions (
   fk_impulse_id serial NOT NULL,
   FOREIGN KEY( fk_impulse_id ) REFERENCES impulses( id ),
   fk_realty_id serial NOT NULL,
-  FOREIGN KEY( fk_realty_id ) REFERENCES realties( id )
+  FOREIGN KEY( fk_realty_id ) REFERENCES realties( id ),
+  is_success boolean NOT NULL
 );
 
 -- births of dreams by brains
@@ -115,4 +116,3 @@ CREATE TABLE IF NOT EXISTS phenomena (
 );
 
 -- the probability values of both tables should give 1 in total
-
