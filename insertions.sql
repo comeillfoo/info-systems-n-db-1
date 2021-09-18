@@ -71,10 +71,10 @@ INSERT INTO expulsions ( fk_impulse_id, fk_realty_id, is_success )
 
 -- births of dreams by brains
 INSERT INTO births ( fk_brain_id, fk_dream_id, probability ) VALUES (
-  ( ( SELECT id FROM brains WHERE id = 1 ), ( SELECT id FROM dreams WHERE id = 1 ), 0.5 )
+  ( SELECT id FROM brains WHERE id = 1 ), ( SELECT id FROM dreams WHERE id = 1 ), 0.5
 );
 
 -- phenomena of dreams by Looking at the Moon
 INSERT INTO phenomena ( fk_looking_at_the_moon_id, fk_dream_id, probability ) VALUES (
-  ( ( SELECT id FROM looking_at_the_moon WHERE id = 1 ), ( SELECT id FROM dreams WHERE id = 1 ), 0.5 )
+  ( SELECT id FROM looking_at_the_moon WHERE id = 1 ), ( SELECT id FROM dreams WHERE id = 1 ), 0.5
 );
