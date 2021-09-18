@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS images (
 -- aliens of realties table
 -- not the Ridley Scott aliens uWu
 CREATE TABLE IF NOT EXISTS aliens (
-  id serial PRIMARY KEY NOT NULL UNIQUE,
+  id series PRIMARY KEY NOT NULL UNIQUE,
   fk_realty_id serial NOT NULL,
   FOREIGN KEY( fk_realty_id ) REFERENCES realties( id ) 
 );
