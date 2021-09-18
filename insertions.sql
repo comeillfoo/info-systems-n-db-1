@@ -5,12 +5,7 @@ INSERT INTO owners ( id ) VALUES ( DEFAULT );
 INSERT INTO realties ( id ) VALUES ( DEFAULT );
 
 -- ownerships facts for owners table
--- CREATE TABLE IF NOT EXISTS ownerships (
---   fk_owner_id serial NOT NULL,
---   FOREIGN KEY( fk_owner_id ) REFERENCES owners( id ),
---   fk_realty_id serial NOT NULL,
---   FOREIGN KEY( fk_realty_id ) REFERENCES realties( id )
--- );
+INSERT INTO ownerships ( fk_owner_id, fk_realty_id ) VALUES ( ( SELECT id FROM owners WHERE id = 1 ), ( SELECT id FROM realties WHERE id = 1 ) );
 
 
 -- brains of looking_at_the_moon table
@@ -63,13 +58,6 @@ INSERT INTO aliens ( id, fk_realty_id )
 
 
 -- expulsions of aliens from realties
--- CREATE TABLE IF NOT EXISTS expulsions (
---   fk_impulse_id serial NOT NULL,
---   FOREIGN KEY( fk_impulse_id ) REFERENCES impulses( id ),
---   fk_realty_id serial NOT NULL,
---   FOREIGN KEY( fk_realty_id ) REFERENCES realties( id )
--- );
-
 INSERT INTO expulsions ( fk_impulse_id, fk_realty_id, is_success )
   VALUES (
     ( SELECT id FROM impulses WHERE id = 1 ),
@@ -82,19 +70,11 @@ INSERT INTO expulsions ( fk_impulse_id, fk_realty_id, is_success )
 );
 
 -- births of dreams by brains
--- CREATE TABLE IF NOT EXISTS births (
---   fk_brain_id serial NOT NULL,
---   FOREIGN KEY( fk_brain_id ) REFERENCES brains( id ),
---   fk_dream_id serial NOT NULL,
---   FOREIGN KEY( fk_dream_id ) REFERENCES dreams( id ),
---   probability double precision NOT NULL
--- );
+INSERT INTO births ( fk_brain_id, fk_dream_id, probability ) VALUES (
+  ( ( SELECT id FROM brains WHERE id = 1 ), ( SELECT id FROM dreams WHERE id = 1 ), 0.5 )
+);
 
 -- phenomena of dreams by Looking at the Moon
--- CREATE TABLE IF NOT EXISTS phenomena (
---   fk_looking_at_the_moon_id serial NOT NULL,
---   FOREIGN KEY( fk_looking_at_the_moon_id ) REFERENCES looking_at_the_moon( id ),
---   fk_dream_id serial NOT NULL,
---   FOREIGN KEY( fk_dream_id ) REFERENCES dreams( id ),
---   probability double precision NOT NULL
--- );
+INSERT INTO phenomena ( fk_looking_at_the_moon_id, fk_dream_id, probability ) VALUES (
+  ( ( SELECT id FROM looking_at_the_moon WHERE id = 1 ), ( SELECT id FROM dreams WHERE id = 1 ), 0.5 )
+);
