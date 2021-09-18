@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS looking_at_the_moon (
 
 -- states for impulses table
 CREATE TABLE IF NOT EXISTS states (
-  name varchar(20) PRIMARY KEY NOT NULL
+  name varchar(40) PRIMARY KEY NOT NULL
 );
 
 -- impulses to characterize looking_at_the_moon table
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS impulses (
   id serial PRIMARY KEY NOT NULL,
   fk_looking_at_the_moon_id serial NOT NULL,
   FOREIGN KEY( fk_looking_at_the_moon_id ) REFERENCES looking_at_the_moon( id ),
-  fk_state_name varchar(20) NOT NULL,
+  fk_state_name varchar(40) NOT NULL,
   FOREIGN KEY( fk_state_name ) REFERENCES states( name )
 );
 
