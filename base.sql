@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS births (
   FOREIGN KEY( fk_brain_id ) REFERENCES brains( id ),
   fk_dream_id serial NOT NULL,
   FOREIGN KEY( fk_dream_id ) REFERENCES dreams( id ),
-  probability double precision NOT NULL
+  probability double precision NOT NULL CHECK ( probability >= 0.0 AND probability <= 1.0 )
 );
 
 -- phenomena of dreams by Looking at the Moon
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS phenomena (
   FOREIGN KEY( fk_looking_at_the_moon_id ) REFERENCES looking_at_the_moon( id ),
   fk_dream_id serial NOT NULL,
   FOREIGN KEY( fk_dream_id ) REFERENCES dreams( id ),
-  probability double precision NOT NULL
+  probability double precision NOT NULL CHECK ( probability >= 0.0 AND probability <= 1.0 )
 );
 
 -- the probability values of both tables should give 1 in total
