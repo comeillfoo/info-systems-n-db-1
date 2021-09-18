@@ -92,8 +92,8 @@ CREATE TABLE IF NOT EXISTS aliens (
 CREATE TABLE IF NOT EXISTS expulsions (
   fk_impulse_id serial NOT NULL,
   FOREIGN KEY( fk_impulse_id ) REFERENCES impulses( id ),
-  fk_realty_id serial NOT NULL,
-  FOREIGN KEY( fk_realty_id ) REFERENCES realties( id ),
+  fk_alien_id serial NOT NULL,
+  FOREIGN KEY( fk_alien_id ) REFERENCES aliens( id ),
   is_success boolean NOT NULL
 );
 
