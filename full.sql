@@ -1,5 +1,3 @@
-set schema 's284733';
-
 -- beginning of creating tables
 \i base.sql
 -- end of creating tables
