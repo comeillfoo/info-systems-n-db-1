@@ -58,7 +58,7 @@ INSERT INTO aliens ( id, fk_realty_id )
 
 
 -- expulsions of aliens from realties
-INSERT INTO expulsions ( fk_impulse_id, fk_realty_id, is_success )
+INSERT INTO expulsions ( fk_impulse_id, fk_alien_id, is_success )
   VALUES (
     ( SELECT id FROM impulses WHERE id = 1 ),
     ( SELECT id FROM aliens WHERE id = 1 ),
