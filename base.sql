@@ -1,6 +1,6 @@
 -- owners table
 CREATE TABLE IF NOT EXISTS owners (
-  id serial PRIMARY KEY UNIQUE
+  id serial PRIMARY KEY NOT NULL UNIQUE
 );
 
 -- realties for owners table
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS looking_at_the_moon (
   id serial PRIMARY KEY NOT NULL UNIQUE,
   fk_brain_id serial NOT NULL,
   FOREIGN KEY( fk_brain_id ) REFERENCES brains( id ),
-  fk_owner_id serial,
+  fk_owner_id integer,
   FOREIGN KEY( fk_owner_id ) REFERENCES owners( id )
 );
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS monoliths (
 -- dreams of monoliths and brains table
 CREATE TABLE IF NOT EXISTS dreams (
   id serial PRIMARY KEY UNIQUE,
-  fk_monolith_id serial,
+  fk_monolith_id integer,
   FOREIGN KEY( fk_monolith_id ) REFERENCES monoliths( id )
 );
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS dreams (
 CREATE TABLE IF NOT EXISTS images (
   id serial PRIMARY KEY NOT NULL UNIQUE,
   is_real boolean NOT NULL,
-  fk_dream_id serial,
+  fk_dream_id integer,
   FOREIGN KEY( fk_dream_id ) REFERENCES dreams( id )
 );
 
