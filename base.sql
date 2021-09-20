@@ -1,6 +1,6 @@
 -- owners table
 CREATE TABLE IF NOT EXISTS owners (
-  id serial PRIMARY KEY NOT NULL UNIQUE
+  id serial PRIMARY KEY UNIQUE
 );
 
 -- realties for owners table
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS monoliths (
 
 -- dreams of monoliths and brains table
 CREATE TABLE IF NOT EXISTS dreams (
-  id serial PRIMARY KEY NOT NULL UNIQUE,
+  id serial PRIMARY KEY UNIQUE,
   fk_monolith_id serial,
   FOREIGN KEY( fk_monolith_id ) REFERENCES monoliths( id )
 );
