@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS owners (
 
 -- realties for owners table
 CREATE TABLE IF NOT EXISTS realties (
-  id serial PRIMARY KEY NOT NULL UNIQUE
+  id serial PRIMARY KEY UNIQUE
 );
 
 -- ownerships facts for owners table
