@@ -1,5 +1,5 @@
 -- owners table
-INSERT INTO owners ( id ) VALUES ( DEFAULT );
+INSERT INTO owners ( id ) VALUES ( 1 );
 
 -- realties for owners table
 INSERT INTO realties ( id ) VALUES ( DEFAULT );
