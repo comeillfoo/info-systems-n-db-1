@@ -10,10 +10,11 @@ CREATE TABLE IF NOT EXISTS realties (
 
 -- ownerships facts for owners table
 CREATE TABLE IF NOT EXISTS ownerships (
-  fk_owner_id serial NOT NULL,
+  fk_owner_id serial,
   FOREIGN KEY( fk_owner_id ) REFERENCES owners( id ),
-  fk_realty_id serial NOT NULL,
-  FOREIGN KEY( fk_realty_id ) REFERENCES realties( id )
+  fk_realty_id serial,
+  FOREIGN KEY( fk_realty_id ) REFERENCES realties( id ),
+  PRIMARY KEY( fk_owner_id, fk_realty_id )
 );
 
 
@@ -94,6 +95,7 @@ CREATE TABLE IF NOT EXISTS expulsions (
   FOREIGN KEY( fk_impulse_id ) REFERENCES impulses( id ),
   fk_alien_id serial NOT NULL,
   FOREIGN KEY( fk_alien_id ) REFERENCES aliens( id ),
+  PRIMARY KEY( fk_impulse_id, fk_alien_id ),
   is_success boolean NOT NULL
 );
 
@@ -103,6 +105,7 @@ CREATE TABLE IF NOT EXISTS births (
   FOREIGN KEY( fk_brain_id ) REFERENCES brains( id ),
   fk_dream_id serial NOT NULL,
   FOREIGN KEY( fk_dream_id ) REFERENCES dreams( id ),
+  PRIMARY KEY( fk_brain_id, fk_dream_id ),
   probability double precision NOT NULL CHECK ( probability >= 0.0 AND probability <= 1.0 )
 );
 
@@ -112,6 +115,7 @@ CREATE TABLE IF NOT EXISTS phenomena (
   FOREIGN KEY( fk_looking_at_the_moon_id ) REFERENCES looking_at_the_moon( id ),
   fk_dream_id serial NOT NULL,
   FOREIGN KEY( fk_dream_id ) REFERENCES dreams( id ),
+  PRIMARY KEY( fk_looking_at_the_moon_id, fk_dream_id ),
   probability double precision NOT NULL CHECK ( probability >= 0.0 AND probability <= 1.0 )
 );
 
